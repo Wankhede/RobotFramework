@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.10.4 on win32)" generated="20220416 16:22:13.760" rpa="false" schemaversion="3">
+<suite id="s1" name="APItest" source="C:\Users\Sopi\PycharmProjects\Project1\AllTest\APItest.robot">
+<test id="s1-t1" name="API Testing" line="20">
+<kw name="Playaround with Dictionary">
+<tag>DICTIONARY</tag>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${data}</var>
+<arg>name=swapnil</arg>
+<arg>course=robot</arg>
+<arg>age=24</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220416 16:22:13.911" level="INFO">${data} = {'name': 'swapnil', 'course': 'robot', 'age': '24'}</msg>
+<status status="PASS" starttime="20220416 16:22:13.911" endtime="20220416 16:22:13.911"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${data}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220416 16:22:13.911" level="INFO">{'name': 'swapnil', 'course': 'robot', 'age': '24'}</msg>
+<status status="PASS" starttime="20220416 16:22:13.911" endtime="20220416 16:22:13.911"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${data}</arg>
+<arg>name</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20220416 16:22:13.911" endtime="20220416 16:22:13.911"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${data}[name]</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220416 16:22:13.911" level="INFO">swapnil</msg>
+<status status="PASS" starttime="20220416 16:22:13.911" endtime="20220416 16:22:13.911"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${check}</var>
+<arg>${data}</arg>
+<arg>name</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20220416 16:22:13.913" level="INFO">${check} = swapnil</msg>
+<status status="PASS" starttime="20220416 16:22:13.911" endtime="20220416 16:22:13.913"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${check}</arg>
+<arg>swapnil</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220416 16:22:13.913" endtime="20220416 16:22:13.913"/>
+</kw>
+<status status="PASS" starttime="20220416 16:22:13.911" endtime="20220416 16:22:13.913"/>
+</kw>
+<kw name="Add Book to Library">
+<tag>ADD</tag>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${book1}</var>
+<arg>name=${Book_name}</arg>
+<arg>isbn=${Book_isbn}</arg>
+<arg>aisle=${Book_aisle}</arg>
+<arg>author=${Book_author}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220416 16:22:13.914" level="INFO">${book1} = {'name': 'Human Behaviour', 'isbn': '11', 'aisle': 'aa', 'author': 'Swap1'}</msg>
+<status status="PASS" starttime="20220416 16:22:13.913" endtime="20220416 16:22:13.914"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${base_url}${Resource_POST}</arg>
+<arg>json=${book1}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20220416 16:22:14.123" level="INFO">POST Request : url=http://216.10.245.166/Library/Addbook.php 
+ path_url=/Library/Addbook.php 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '75', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Human Behaviour", "isbn": "11", "aisle": "aa", "author": "Swap1"}' 
+ </msg>
+<msg timestamp="20220416 16:22:14.123" level="INFO">POST Response : url=http://216.10.245.166/Library/Addbook.php 
+ status=200, reason=OK 
+ headers={'Date': 'Sat, 16 Apr 2022 10:52:13 GMT', 'Server': 'Apache', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Max-Age': '3600', 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Transfer-Encoding': 'chunked', 'Content-Type': 'application/json;charset=UTF-8'} 
+ body={"Msg":"successfully added","ID":"11aa"} 
+ </msg>
+<msg timestamp="20220416 16:22:14.123" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220416 16:22:13.914" endtime="20220416 16:22:14.123"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220416 16:22:14.123" endtime="20220416 16:22:14.124"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220416 16:22:14.124" level="INFO">{'Msg': 'successfully added', 'ID': '11aa'}</msg>
+<status status="PASS" starttime="20220416 16:22:14.124" endtime="20220416 16:22:14.124"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>ID</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20220416 16:22:14.124" endtime="20220416 16:22:14.125"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${ID}</var>
+<arg>${response.json()}</arg>
+<arg>ID</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20220416 16:22:14.126" level="INFO">${ID} = 11aa</msg>
+<status status="PASS" starttime="20220416 16:22:14.125" endtime="20220416 16:22:14.126"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${ID}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220416 16:22:14.126" level="INFO">${ID} = 11aa</msg>
+<status status="PASS" starttime="20220416 16:22:14.126" endtime="20220416 16:22:14.126"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${ID}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220416 16:22:14.126" level="INFO">11aa</msg>
+<status status="PASS" starttime="20220416 16:22:14.126" endtime="20220416 16:22:14.126"/>
+</kw>
+<status status="PASS" starttime="20220416 16:22:13.913" endtime="20220416 16:22:14.126"/>
+</kw>
+<status status="PASS" starttime="20220416 16:22:13.909" endtime="20220416 16:22:14.127"/>
+</test>
+<status status="PASS" starttime="20220416 16:22:13.763" endtime="20220416 16:22:14.129"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="APItest">APItest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
