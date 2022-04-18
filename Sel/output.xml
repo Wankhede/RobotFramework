@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.10.4 on win32)" generated="20220418 10:32:46.326" rpa="false" schemaversion="3">
+<suite id="s1" name="Trial" source="C:\Users\Swapnil.Wankhede\PycharmProjects\RobotSel\Sel\trial.robot">
+<test id="s1-t1" name="Googw" line="16">
+<kw name="Hulk">
+<kw name="Create List" library="BuiltIn">
+<var>@{list1}</var>
+<arg>{a,b,c,d,e,f}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220418 10:32:46.356" level="INFO">@{list1} = [ {a,b,c,d,e,f} ]</msg>
+<status status="PASS" starttime="20220418 10:32:46.356" endtime="20220418 10:32:46.356"/>
+</kw>
+<for flavor="IN">
+<var>${i}</var>
+<value>${list1}</value>
+<iter>
+<var name="${i}">['{a,b,c,d,e,f}']</var>
+<kw name="Log" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220418 10:32:46.357" level="INFO">['{a,b,c,d,e,f}']</msg>
+<status status="PASS" starttime="20220418 10:32:46.356" endtime="20220418 10:32:46.357"/>
+</kw>
+<status status="PASS" starttime="20220418 10:32:46.356" endtime="20220418 10:32:46.357"/>
+</iter>
+<status status="PASS" starttime="20220418 10:32:46.356" endtime="20220418 10:32:46.357"/>
+</for>
+<status status="PASS" starttime="20220418 10:32:46.355" endtime="20220418 10:32:46.357"/>
+</kw>
+<status status="PASS" starttime="20220418 10:32:46.355" endtime="20220418 10:32:46.357"/>
+</test>
+<status status="PASS" starttime="20220418 10:32:46.327" endtime="20220418 10:32:46.358"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Trial">Trial</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220418 10:32:46.346" level="ERROR">Error in file 'C:\Users\Swapnil.Wankhede\PycharmProjects\RobotSel\Sel\trial.robot' on line 2: Importing library 'Strings' failed: ModuleNotFoundError: No module named 'Strings'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\Swapnil.Wankhede\PycharmProjects\RobotSel\venv\Scripts\robot.exe
+  C:\Users\Swapnil.Wankhede\AppData\Local\Programs\Python\Python310\python310.zip
+  C:\Users\Swapnil.Wankhede\AppData\Local\Programs\Python\Python310\DLLs
+  C:\Users\Swapnil.Wankhede\AppData\Local\Programs\Python\Python310\lib
+  C:\Users\Swapnil.Wankhede\AppData\Local\Programs\Python\Python310
+  C:\Users\Swapnil.Wankhede\PycharmProjects\RobotSel\venv
+  C:\Users\Swapnil.Wankhede\PycharmProjects\RobotSel\venv\lib\site-packages</msg>
+</errors>
+</robot>
